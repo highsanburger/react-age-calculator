@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 
-function App() {
+const buttonStyle = {
+  background: 'blue',
+  color: 'white',
+  padding: '10px 20px',
+  border: 'none',
+  cursor: 'pointer',
+};
+
+const App = () => {
   const [birthDate, setBirthDate] = useState('');
   const [age, setAge] = useState(null);
 
@@ -16,24 +24,39 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+      }}
+    >
       <h1>Age Calculator</h1>
-      <form>
+      <form style={{ textAlign: 'center' }}>
         <label htmlFor="birthDate">Enter your Date of Birth:</label>
+        <br />
         <input
           type="date"
           id="birthDate"
           value={birthDate}
           onChange={(e) => setBirthDate(e.target.value)}
+          style={{ margin: '10px 0' }}
         />
-        <button type="button" onClick={calculateAge}>
+        <br />
+        <button
+          type="button"
+          onClick={calculateAge}
+          style={buttonStyle}
+        >
           Calculate Age
         </button>
       </form>
-      {age !== null && <p>You are {age} years old.</p>}
+      {age !== null && <p> <b> You are {age} years old.</b></p>}
     </div>
   );
-}
+};
 
 export default App;
 
